@@ -1,4 +1,4 @@
-# Challenger Webmix
+# Challenge Webmix
 
 Esse projeto é um desafio para vaga de programador na Webmix. O desafio consiste em desenvolver um Sistema Básico de Cadastro de Cursos
 
