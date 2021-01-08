@@ -4,20 +4,9 @@ class Cursos_model extends CI_Model {
 
         //Lista os curso
         public function index()
-        {
-            //return $this->db->get('cursos')->result_array();
-           
-            //$this->db->join('cursos', 'cursos.categorias = categorias.idcategorias', 'left')->get()->result_array();
-
-            // $this->db->select('SELECT idcursos, cursos.nome as ncurso, conteudo, cursos.status, categorias.nome as cnome FROM
-            //  `cursos`, categorias where `cursos`.`categorias` = `categorias`.`idcategorias` order BY (cnome)
-            // ', FALSE);
-
+        {          
             return  $this->db->query('SELECT idcursos, cursos.nome as ncurso, conteudo, cursos.status, categorias.nome as ncategoria FROM `cursos`, categorias where `cursos`.`categorias` = `categorias`.`idcategorias` order BY (ncategoria)
-            ')->result_array();
-            
-           //return $this->db->get()->result_array();
-
+            ')->result_array();                      
         }
         
         //Inserir novo curso no banco de dado
@@ -46,6 +35,22 @@ class Cursos_model extends CI_Model {
 		{
 			$this->db->where("idcursos", $id);
 			return $this->db->delete("cursos");
-		}
-
+        }
+        
+        //função para realizar a busca
+        function fetch_data($query)
+        {
+            $this->db->select("*");
+            $this->db->from("cursos");
+            if($query != '')
+            {
+            $this->db->like('idcursos', $query);
+            $this->db->or_like('nome', $query);
+            $this->db->or_like('categorias', $query);
+            $this->db->or_like('status', $query);           
+            }
+            $this->db->order_by('categorias');
+            return $this->db->get();
+        }
 }
+

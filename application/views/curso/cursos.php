@@ -11,15 +11,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="row">
 					<div class="col">
 						<a href="<?= base_url()?>curso/new" class="btn btn-primary">Cadastrar Novo</a>
+						<a href="<?= base_url()?>curso/busca" class="btn btn-success">Buscar</a>
 					</div>
-					<div class="col">
-						<form class="form-inline mt-2 mt-md-0">						
-							<input class="form-control mr-sm-2" type="text" placeholder="Informe o nome do curso" aria-label="Search">
-							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-						</form>
+					<div class="col">																
 					</div>							
 				</div>
-						
+								
 				<div class="row">
 					<div class="col">
 						<table class="table">
@@ -27,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<tr>
 									<th scope="col">#</th>
 									<th scope="col">Nome Curso</th>
-									<th scope="col">Categoria</th>
-									<!-- <th scope="col">Conteúdo</th> -->
+									<th scope="col">Categoria</th>									
 									<th scope="col">Status</th>
 									<th scope="col">Ação</th>						
 								</tr>
@@ -41,8 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<td><?= $curso['ncategoria'] ?></td>										
 										<td><?= $curso['status'] ?></td>
 										<td>
-											<a href="<?= base_url() ?>curso/edit/<?= $curso['idcursos']?>" class="btn btn-sm btn-warning">Alterar</a>
-											<!-- <a href="<?= base_url() ?>curso/delete/<?= $curso['idcursos']?>" class="btn btn-sm btn-danger">Excluir</a> -->
+											<a href="<?= base_url() ?>curso/edit/<?= $curso['idcursos']?>" class="btn btn-sm btn-warning">Alterar</a>											
 											<a href="javascript:goDelete(<?= $curso['idcursos']?>)" class="btn btn-sm btn-danger">Excluir</a>
 										</td>
 										
@@ -54,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 				</div>
 
-			</div>
+			
 		</main>
 
 	<script>

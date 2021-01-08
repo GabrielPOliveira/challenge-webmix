@@ -50,8 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label for="exampleFormControlInput1">Status</label>
                 <input type="text" name="status" class="form-control" value="<?= isset($curso) ? $curso['status'] : "" ?>" id="exampleFormControlInput1" placeholder="Informe o status do curso">
             </div>
-            
-            
+                        
             <div class="cold-md-6">
                 <button type="submit" class="btn btn-success btn-xs">Salvar</button>
                 <a href="<?= base_url()?>curso" class="btn btn-danger btn-xs">Cancelar</a>

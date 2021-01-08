@@ -23,6 +23,7 @@ class Categorias_model extends CI_Model {
         ))->row_array();
     }
 
+    //função para alterar os dados
     public function update($id, $categoria)
     {
         $this->db->where('idcategorias', $id);

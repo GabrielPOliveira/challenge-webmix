@@ -68,6 +68,18 @@ class Curso extends CI_Controller {
 		$this->cursos_model->destroy($id);
 		redirect('curso');
 	}
+
+	public function busca()
+	{
+		$data["cursos"] = $this->cursos_model->index();	
+			
+		$data["title"] = "Challenge Webmix - Curso";
+		
+		$this->load->view('layout/header', $data); //Carregando o Header do Layout
+		$this->load->view('curso/ajaxsearch', $data);
+		$this->load->view('layout/footer', $data); //Carregando o Footer do Layout
+		
+	}
 }
 
 
