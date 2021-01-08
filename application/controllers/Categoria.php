@@ -3,11 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Categoria extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('categorias_model');
+
+	}
+
 	
 	public function index()
 	{
 		
-		$this->load->model('categorias_model');
+		
 		$data["categorias"] = $this->categorias_model->index();	
 		 	
 		$data["title"] = "Challenge Webmix - Categorias";
@@ -31,7 +38,7 @@ class Categoria extends CI_Controller {
 	{
 		$categoria = $_POST;
 
-		$this->load->model('categorias_model');
+		
 		$this->categorias_model->store($categoria);
 		
 		redirect('categoria');
@@ -39,7 +46,7 @@ class Categoria extends CI_Controller {
 
 	public function edit($id)
 	{
-		$this->load->model('categorias_model');
+		
 		$data["categoria"] = $this->categorias_model->show($id);	
 		 	
 		$data["title"] = "Challenge Webmix - Editar Categorias";
@@ -52,7 +59,7 @@ class Categoria extends CI_Controller {
 	public function update ($id)
 	{
 		$categoria = $_POST;
-		$this->load->model('categorias_model');
+		
 		$this->categorias_model->update($id, $categoria);
 		redirect('categoria');
 		

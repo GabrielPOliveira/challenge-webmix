@@ -10,13 +10,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<p class="lead">Lista de cursos</p>
 				<div class="row">
 					<div class="col">
-						<a href="#" class="btn btn-primary">Cadastrar Novo</a>
+						<a href="<?= base_url()?>curso/new" class="btn btn-primary">Cadastrar Novo</a>
 					</div>
-				
-				
+					<div class="col">
+						<form class="form-inline mt-2 mt-md-0">						
+							<input class="form-control mr-sm-2" type="text" placeholder="Informe o nome do curso" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+						</form>
+					</div>							
 				</div>
-				
-			
+						
 				<div class="row">
 					<div class="col">
 						<table class="table">
@@ -25,47 +28,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th scope="col">#</th>
 									<th scope="col">Nome Curso</th>
 									<th scope="col">Categoria</th>
-									<th scope="col">Conteúdo</th>
+									<!-- <th scope="col">Conteúdo</th> -->
 									<th scope="col">Status</th>
 									<th scope="col">Ação</th>						
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>Otto</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-warning">Alterar</a>
-									<a href="#" class="btn btn-sm btn-danger">Excluir</a>
-								</td>
-								
-								</tr>
-								<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>Otto</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-warning">Alterar</a>
-									<a href="#" class="btn btn-sm btn-danger">Excluir</a>
-								</td>
-								
-								</tr>
-								<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td>Otto</td>	
-								<td>
-									<a href="#" class="btn btn-sm btn-warning">Alterar</a>
-									<a href="#" class="btn btn-sm btn-danger">Excluir</a>
-								</td>					
-								</tr>
+								<?php foreach($cursos as $curso) : ?> 
+										<tr>
+										<th scope="row"><?= $curso['idcursos'] ?></th>
+										<td><?= $curso['ncurso'] ?></td>
+										<td><?= $curso['ncategoria'] ?></td>										
+										<td><?= $curso['status'] ?></td>
+										<td>
+											<a href="<?= base_url() ?>curso/edit/<?= $curso['idcursos']?>" class="btn btn-sm btn-warning">Alterar</a>
+											<!-- <a href="<?= base_url() ?>curso/delete/<?= $curso['idcursos']?>" class="btn btn-sm btn-danger">Excluir</a> -->
+											<a href="javascript:goDelete(<?= $curso['idcursos']?>)" class="btn btn-sm btn-danger">Excluir</a>
+										</td>
+										
+										</tr>
+								<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>
@@ -75,4 +57,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</main>
 
-	
+	<script>
+		function goDelete(id)
+		{
+			var myUrl = 'curso/delete/'+id;			
+			bootbox.confirm({
+				title: "Exclusão de Curso?",
+				message: "Você tem certeza que deseja excluir o curso ?",
+				buttons: {
+					confirm: {
+						label: 'Sim',
+						className: 'btn-success'
+					},
+					cancel: {
+						label: 'Não',
+						className: 'btn-danger'
+					}
+				},
+				callback: function (result) {
+					//console.log('This was logged in the callback: ' + result);
+					if(result == true)
+					{
+						window.location.href = myUrl;
+					}					
+				}
+			});
+			//bootbox.alert('Registro excluído com sucesso.');
+		}
+	</script>
