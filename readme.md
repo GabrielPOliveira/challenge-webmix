@@ -14,16 +14,41 @@ Desafio:
 ```
 git clone https://github.com/GabrielPOliveira/challenge-webmix.git
 ```
-### 2.
-
-### Prerequisites
+### 2. Configurar o banco de dados
+```
+Na pasta raiz do projeto está o arquivo script.sql para criação das tabelas utilizadas.
+```
+### Requisites
 - CodeIgniter v3.*
 - PHP 7.2+
 - MySQL
+- Não é preciso baixar nenhum pacote npm, os arquivos do bootstrap e jquery foram utilizados via CDN.
 
-### Installing
+###  Melhorias para a próxima versão
+ - Ajustar a marcação dos links ativos de menu
+ - Melhorar as mensagens de validação
+ - Melhorar o sistema de busca.
+
+### Algumas imagens do sistema
+- Cursos listagem e cadastro
+
+<img src="cursos.gif"/>
+
+- Cursos alteração e exclusão
+
+<img src="cursosup.gif"/>
+
+- Busca 
+
+<img src="busca.gif"/>
+
+- Categorias
+
+
+<img src="categoria.gif"/>
+
+
 
 
 ## Authors
-
 * **Gabriel P. Oliveira**
